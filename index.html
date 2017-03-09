@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>What Will You Take?</title>
+	<script type="text/javascript" src="assets/js/vendor/phaser.min.js"></script>
+	<script type="text/javascript" src="assets/js/backpack.js"></script>
+	<script type="text/javascript" src="assets/js/bear.js"></script>
+	<script type="text/javascript" src="assets/js/camera.js"></script>
+	<script type="text/javascript" src="assets/js/game.js"></script>
+	<script type="text/javascript" src="assets/js/loading.js"></script>
+	<script type="text/javascript" src="assets/js/main.js"></script>
+	<script type="text/javascript" src="assets/js/passport.js"></script>
+	<script type="text/javascript" src="assets/js/phone.js"></script>
+	<script type="text/javascript" src="assets/js/sketchbook.js"></script>
+</head>
+<body>
+	<div id="game"></div>
+	<script type="text/javascript">
+		(function() {
+			game = new Phaser.Game(800, 600, Phaser.AUTO, 'game');
+
+			// game.state.add('Boot', Boot);
+			// game.state.add('Preload', Preload);
+			game.state.add('Main', Main);
+			game.state.add('Phone', Phone);
+			game.state.add('Backpack', Backpack);
+			game.state.add('Passport', Passport);
+			game.state.add('Camera', Camera);
+			game.state.add('Sketchbook', Sketchbook);
+			game.state.add('Bear', Bear);
+
+			// game.state.start('Boot');
+			game.state.start('Main');
+		})();
+	</script>
+</body>
+</html>
