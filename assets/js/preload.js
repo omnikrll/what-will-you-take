@@ -23,8 +23,14 @@ Preload.prototype = {
 
 		// load sprites
 		this.game.load.spritesheet('girl', 'assets/images/sprites/girl_sprite.png', 191, 382, 2);
-		this.game.load.spritesheet('drone', 'assets/images/sprites/drone.png', 220, 176, 1);
-		this.game.load.spritesheet('smoke', 'assets/images/sprites/smoke_sprite.png', 235, 290, 2);
+		this.game.load.image('drone', 'assets/images/sprites/drone.png');
+		this.game.load.image('smoke1', 'assets/images/sprites/smoke1.png');
+		this.game.load.image('smoke2', 'assets/images/sprites/smoke2.png');
+
+		// load sounds
+		this.game.load.audio('jet', ['assets/audio/jet.mp3', 'assets/audio/jet.ogg']);
+		this.game.load.audio('city-ambience', ['assets/audio/city-ambience.mp3', 'assets/audio/city-ambience.ogg']);
+		this.game.load.audio('fire', ['assets/audio/fire.mp3', 'assets/audio/fire.ogg']);
 	},
 	create: function() {
 		text.destroy();
