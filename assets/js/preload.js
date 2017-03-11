@@ -1,10 +1,35 @@
 var Preload = function(game) {
 	text = null;
+	dots = '';
 };
 
 Preload.prototype = {
 	preload: function() {
-		text = this.game.add.text(100, 100, 'Loading...', {font: '32px Arial', fill: '#ffffff'});
+		text = this.game.add.text(
+			0,
+			0,
+			'Loading' + dots,
+			{
+				font: '32px Arial',
+				fill: '#ffffff',
+				align: 'center',
+				boundsAlignH: 'center',
+				boundsAlignV: 'middle'
+			}
+		);
+
+		text.setTextBounds(0, 0, this.game.world.width, this.game.world.height);
+
+		var counter = function() {
+			dots += '.';
+
+			if (dots == '....') dots = '';
+
+			text.setText('Loading' + dots);
+		}
+
+		this.game.time.events.loop(Phaser.Timer.SECOND * 0.7, counter, this);
+
 		// load static images
 		this.game.load.image('background', 'assets/images/background.jpg');
 		this.game.load.image('camera1', 'assets/images/camera/camera1.jpg');
