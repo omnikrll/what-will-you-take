@@ -15,10 +15,16 @@ Main.prototype = {
 	create: function() {
 		// add images
 		background = this.game.add.sprite(0, 0, 'background');
-		girl = this.game.add.sprite(158, this.game.world.height - 368, 'girl');		
-		drone = this.game.add.sprite(this.game.world.width - 286, 0, 'drone');
-		smoke = this.game.add.sprite(this.game.world.width - 320, (this.game.world.height / 2) - 180, 'smoke');
 
+		this.addGirl();
+		this.addDrone();
+		this.addSmoke();
+		this.addBackpack();
+		this.addPhone();
+	},
+
+	addGirl: function() {
+		girl = this.game.add.sprite(158, this.game.world.height - 368, 'girl');		
 		girl.inputEnabled = true;
 
 		var mouseDown = function() {
@@ -30,28 +36,23 @@ Main.prototype = {
 		};
 
 		girl.events.onInputDown.add(mouseDown, this);
-		girl.events.onInputUp.add(mouseUp, this);
-
-		this.addBackpack();
-		this.addPhone();
+		girl.events.onInputUp.add(mouseUp, this);		
 	},
 
-	update: function() {
-		// click to phone and backpack screens
-		if (backpackClickZone.input.pointerOver()) {
-			backpackToolTip.x = this.game.input.x - 18;
-			backpackToolTip.y = this.game.input.y - 36;
-		} else {
-			backpackToolTip.x = -1000;
-			backpackToolTip.y = -1000;
-		}
-		if (phoneClickZone.input.pointerOver()) {
-			phoneToolTip.x = this.game.input.x - 18;
-			phoneToolTip.y = this.game.input.y - 36;
-		} else {
-			phoneToolTip.x = -1000;
-			phoneToolTip.y = -1000;
-		}
+	addDrone: function() {
+		drone = this.game.add.sprite(this.game.world.width, 0, 'drone');
+
+		var flyDrone = function() {
+			drone.x = this.game.world.width;
+			this.game.add.tween(drone).to({x: -356}, 8000, Phaser.Easing.Linear.None, true);
+		};
+
+		flyDrone();
+		this.game.time.events.loop(Phaser.Timer.SECOND * 20, flyDrone, this);
+	},
+
+	addSmoke: function() {
+		smoke = this.game.add.sprite(this.game.world.width - 320, (this.game.world.height / 2) - 180, 'smoke');
 	},
 
 	addBackpack: function() {
@@ -101,5 +102,23 @@ Main.prototype = {
 		phoneClickZone.events.onInputDown.add(openPhone, this);
 
 		phoneToolTip = this.game.add.text(-1000, -1000, 'open phone', {font: '18px Arial', fill: '#ffffff'});
+	},
+
+	update: function() {
+		// click to phone and backpack screens
+		if (backpackClickZone.input.pointerOver()) {
+			backpackToolTip.x = this.game.input.x - 18;
+			backpackToolTip.y = this.game.input.y - 36;
+		} else {
+			backpackToolTip.x = -1000;
+			backpackToolTip.y = -1000;
+		}
+		if (phoneClickZone.input.pointerOver()) {
+			phoneToolTip.x = this.game.input.x - 18;
+			phoneToolTip.y = this.game.input.y - 36;
+		} else {
+			phoneToolTip.x = -1000;
+			phoneToolTip.y = -1000;
+		}
 	}
 };
