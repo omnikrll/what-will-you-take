@@ -4,7 +4,7 @@ var Preload = function(game) {
 
 Preload.prototype = {
 	preload: function() {
-		text = game.add.text(100, 100, 'Loading...', {font: '32px Arial', fill: '#ffffff'});
+		text = this.game.add.text(100, 100, 'Loading...', {font: '32px Arial', fill: '#ffffff'});
 		// load static images
 		this.game.load.image('background', 'assets/images/background.jpg');
 		this.game.load.image('camera1', 'assets/images/camera/camera1.jpg');
@@ -22,7 +22,7 @@ Preload.prototype = {
 
 
 		// load sprites
-		this.game.load.spritesheet('girl', 'assets/images/sprites/girl_sprite.png', 290, 422, 2);
+		this.game.load.spritesheet('girl', 'assets/images/sprites/girl_sprite.png', 191, 382, 2);
 		this.game.load.spritesheet('drone', 'assets/images/sprites/drone.png', 220, 176, 1);
 		this.game.load.spritesheet('smoke', 'assets/images/sprites/smoke_sprite.png', 235, 290, 2);
 	},

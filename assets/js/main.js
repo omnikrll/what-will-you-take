@@ -15,15 +15,29 @@ Main.prototype = {
 	create: function() {
 		// add images
 		background = this.game.add.sprite(0, 0, 'background');
-		girl = this.game.add.sprite(120, this.game.world.height - 400, 'girl');		
+		girl = this.game.add.sprite(158, this.game.world.height - 368, 'girl');		
 		drone = this.game.add.sprite(this.game.world.width - 286, 0, 'drone');
 		smoke = this.game.add.sprite(this.game.world.width - 320, (this.game.world.height / 2) - 180, 'smoke');
+
+		girl.inputEnabled = true;
+
+		var mouseDown = function() {
+			girl.frame = 1;
+		};
+
+		var mouseUp = function() {
+			girl.frame = 0;
+		};
+
+		girl.events.onInputDown.add(mouseDown, this);
+		girl.events.onInputUp.add(mouseUp, this);
 
 		this.addBackpack();
 		this.addPhone();
 	},
 
 	update: function() {
+		// click to phone and backpack screens
 		if (backpackClickZone.input.pointerOver()) {
 			backpackToolTip.x = this.game.input.x - 18;
 			backpackToolTip.y = this.game.input.y - 36;
@@ -57,6 +71,12 @@ Main.prototype = {
 
 		backpackClickZone.inputEnabled = true;
 
+		var openBackpack = function() {
+			this.game.state.start('Backpack');
+		};
+
+		backpackClickZone.events.onInputDown.add(openBackpack, this);
+
 		backpackToolTip = this.game.add.text(-1000, -1000, 'open backpack', {font: '18px Arial', fill: '#ffffff'});
 	},
 
@@ -73,6 +93,12 @@ Main.prototype = {
 		phoneClickZone.endFill();
 
 		phoneClickZone.inputEnabled = true;
+
+		var openPhone = function() {
+			this.game.state.start('Phone');
+		};
+
+		phoneClickZone.events.onInputDown.add(openPhone, this);
 
 		phoneToolTip = this.game.add.text(-1000, -1000, 'open phone', {font: '18px Arial', fill: '#ffffff'});
 	}
