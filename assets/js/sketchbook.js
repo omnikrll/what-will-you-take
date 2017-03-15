@@ -34,11 +34,11 @@ Sketchbook.prototype = {
 			sketches.anchor.setTo(0.5, 0.5);
 			sketches.scale.setTo(0.37, 0.37);
 
-			previousSketch = this.game.add.text(140, this.game.world.height - 60, 'previous', {font: '14px Arial', fill: '#ffffff'});
+			previousSketch = this.game.add.text(200, this.game.world.height - 60, 'previous', {font: '16px Arial', fill: '#ffffff'});
 			previousSketch.inputEnabled = true;
 			previousSketch.events.onInputDown.add(this.toggleSketch, {shift: -1});
 
-			nextSketch = this.game.add.text(this.game.world.width - 140, this.game.world.height - 60, 'next', {font: '14px Arial', fill: '#ffffff'});
+			nextSketch = this.game.add.text(this.game.world.width - 240, this.game.world.height - 60, 'next', {font: '16px Arial', fill: '#ffffff'});
 			nextSketch.inputEnabled = true;
 			nextSketch.events.onInputDown.add(this.toggleSketch, {shift: 1});
 		}, this);
