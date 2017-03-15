@@ -108,16 +108,7 @@ Main.prototype = {
 		backpackClickZone.endFill();
 
 		backpackClickZone.inputEnabled = true;
-
-		var openBackpack = function() {
-			ambience.stop();
-			jet.stop();
-			fire.stop();
-
-			this.game.state.start('Backpack');
-		};
-
-		backpackClickZone.events.onInputDown.add(openBackpack, this);
+		backpackClickZone.events.onInputDown.add(this.startState, {_game: this.game, state: 'Backpack'});
 
 		backpackToolTip = this.game.add.text(-1000, -1000, 'open backpack', {font: '18px Arial', fill: '#ffffff'});
 	},
@@ -135,17 +126,16 @@ Main.prototype = {
 		phoneClickZone.endFill();
 
 		phoneClickZone.inputEnabled = true;
-
-		var openPhone = function() {
-			ambience.stop();
-			jet.stop();
-			fire.stop();
-			this.game.state.start('Phone');
-		};
-
-		phoneClickZone.events.onInputDown.add(openPhone, this);
+		phoneClickZone.events.onInputDown.add(this.startState, {_game: this.game, state: 'Phone'});
 
 		phoneToolTip = this.game.add.text(-1000, -1000, 'open phone', {font: '18px Arial', fill: '#ffffff'});
+	},
+
+	startState: function() {
+		ambience.stop();
+		jet.stop();
+		fire.stop();
+		this._game.state.start(this.state);
 	},
 
 	update: function() {

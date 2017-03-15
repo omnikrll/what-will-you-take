@@ -115,13 +115,7 @@ Phone.prototype = {
 
 		backText = this.game.add.text(20, 20, 'back', { font: '24px Arial', fill: '#ffffff' });
 		backText.inputEnabled = true;
-
-		var back = function() {
-			video.stop();
-			this.game.state.start('Main');
-		}
-
-		backText.events.onInputDown.add(back, this);
+		backText.events.onInputDown.add(this.startState, {_game: this.game, state: 'Main'});
 	},
 
 	setVideo: function() {
@@ -139,4 +133,8 @@ Phone.prototype = {
 		videoText.setText(curVideo.text);
 		video.play(true);
 	},
+
+	startState: function() {
+		this._game.state.start(this.state);
+	}
 };

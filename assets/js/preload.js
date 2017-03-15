@@ -56,6 +56,9 @@ Preload.prototype = {
 		this.game.load.image('inventory-camera', 'assets/images/sprites/inventory_camera.png');
 		this.game.load.image('inventory-passport', 'assets/images/sprites/inventory_passport.png');
 		this.game.load.image('inventory-sketchbook', 'assets/images/sprites/inventory_sketchbook.png');
+		this.game.load.image('passport', 'assets/images/sprites/passport.png');
+		this.game.load.image('passport-text', 'assets/images/sprites/passport_text.png');
+		this.game.load.image('camera', 'assets/images/sprites/camera.png');
 
 		// load sounds
 		this.game.load.audio('jet', ['assets/audio/jet.mp3', 'assets/audio/jet.ogg']);
