@@ -30,21 +30,7 @@ Preload.prototype = {
 
 		this.game.time.events.loop(Phaser.Timer.SECOND * 0.7, counter, this);
 
-		// load static images
 		this.game.load.image('background', 'assets/images/background.jpg');
-		this.game.load.image('camera1', 'assets/images/camera/camera1.jpg');
-		this.game.load.image('camera2', 'assets/images/camera/camera2.jpg');
-		this.game.load.image('camera3', 'assets/images/camera/camera3.jpg');
-		this.game.load.image('camera4', 'assets/images/camera/camera4.jpg');
-		this.game.load.image('camera5', 'assets/images/camera/camera5.jpg');
-		this.game.load.image('sketch1', 'assets/images/sketchbook/sketch1.jpg');
-		this.game.load.image('sketch2', 'assets/images/sketchbook/sketch2.jpg');
-		this.game.load.image('sketch3', 'assets/images/sketchbook/sketch3.jpg');
-		this.game.load.image('sketch4', 'assets/images/sketchbook/sketch4.jpg');
-		this.game.load.image('sketch5', 'assets/images/sketchbook/sketch5.jpg');
-		this.game.load.image('sketch6', 'assets/images/sketchbook/sketch6.jpg');
-
-		// load sprites
 		this.game.load.spritesheet('girl', 'assets/images/sprites/girl_sprite.png', 191, 382, 2);
 		this.game.load.image('drone', 'assets/images/sprites/drone.png');
 		this.game.load.image('smoke1', 'assets/images/sprites/smoke1.png');
@@ -60,6 +46,8 @@ Preload.prototype = {
 		this.game.load.image('passport-text', 'assets/images/sprites/passport_text.png');
 		this.game.load.image('camera', 'assets/images/sprites/camera.png');
 		this.game.load.spritesheet('photos', 'assets/images/sprites/photos.png', 1024, 683, 5);
+		this.game.load.spritesheet('sketchbook', 'assets/images/sprites/sketchbook_sprite.png', 1024, 1317, 4);
+		this.game.load.spritesheet('sketches', 'assets/images/sprites/sketches.png', 960, 1366, 6);
 
 		// load sounds
 		this.game.load.audio('jet', ['assets/audio/jet.mp3', 'assets/audio/jet.ogg']);

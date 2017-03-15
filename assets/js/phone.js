@@ -135,6 +135,7 @@ Phone.prototype = {
 	},
 
 	startState: function() {
+		video.stop();
 		this._game.state.start(this.state);
 	}
 };
