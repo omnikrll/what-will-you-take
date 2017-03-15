@@ -4,6 +4,10 @@ var Main = function(game) {
 	drone = null;
 	smoke = null;
 
+	ambience = null;
+	jet = null;
+	fire = null;
+
 	backpackClickZone = null;
 	phoneClickZone = null;
 
@@ -15,7 +19,7 @@ Main.prototype = {
 	create: function() {
 		// add images
 		background = this.game.add.sprite(0, 0, 'background');
-		var ambience = this.game.add.audio('city-ambience');
+		ambience = this.game.add.audio('city-ambience');
 		ambience.loopFull(0.3);
 
 		this.addSmoke();
@@ -35,7 +39,7 @@ Main.prototype = {
 
 		var flight = this.game.add.tween(drone).to({x: -356}, 8000, Phaser.Easing.Linear.None, true);
 
-		var jet = this.game.add.audio('jet');
+		jet = this.game.add.audio('jet');
 		jet.volume = 0.1;
 
 		var flyDrone = function() {
@@ -52,10 +56,9 @@ Main.prototype = {
 		var timer = 2400,
 			_alpha = 0.3,
 			_x = this.game.world.width - 340,
-			_y = (this.game.world.height / 2) - 180,
-			fire = this.game.add.audio('fire');
+			_y = (this.game.world.height / 2) - 180;
 
-
+		fire = this.game.add.audio('fire');
 
 		smoke2 = this.game.add.sprite(_x, _y, 'smoke2');
 		smoke2.alpha = _alpha;
@@ -130,6 +133,9 @@ Main.prototype = {
 		phoneClickZone.inputEnabled = true;
 
 		var openPhone = function() {
+			ambience.stop();
+			jet.stop();
+			fire.stop();
 			this.game.state.start('Phone');
 		};
 
