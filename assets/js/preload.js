@@ -45,14 +45,20 @@ Preload.prototype = {
 		this.game.load.image('passport', 'assets/images/sprites/passport.png');
 		this.game.load.image('passport-text', 'assets/images/sprites/passport_text.png');
 		this.game.load.image('camera', 'assets/images/sprites/camera.png');
-		this.game.load.spritesheet('photos', 'assets/images/sprites/photos.png', 1024, 683, 5);
-		this.game.load.spritesheet('sketchbook', 'assets/images/sprites/sketchbook_sprite.png', 1024, 1317, 4);
-		this.game.load.spritesheet('sketches', 'assets/images/sprites/sketches.png', 960, 1366, 6);
+		this.game.load.spritesheet('photos', 'assets/images/sprites/photos.png', 512, 342, 5);
+		this.game.load.spritesheet('sketchbook', 'assets/images/sprites/sketchbook_sprite.png', 543, 698, 4);
+		this.game.load.spritesheet('sketches', 'assets/images/sprites/sketches.png', 355, 505, 6);
 
 		// load sounds
-		this.game.load.audio('jet', ['assets/audio/jet.mp3', 'assets/audio/jet.ogg']);
-		this.game.load.audio('city-ambience', ['assets/audio/city-ambience.mp3', 'assets/audio/city-ambience.ogg']);
+		this.game.load.audio('ambience', ['assets/audio/ambience.mp3', 'assets/audio/ambience.ogg']);
+		this.game.load.audio('cameraSound1', ['assets/audio/camera1.mp3', 'assets/audio/camera1.ogg']);
+		this.game.load.audio('cameraSound2', ['assets/audio/camera2.mp3', 'assets/audio/camera2.ogg']);
 		this.game.load.audio('fire', ['assets/audio/fire.mp3', 'assets/audio/fire.ogg']);
+		this.game.load.audio('jet', ['assets/audio/jet.mp3', 'assets/audio/jet.ogg']);
+		this.game.load.audio('pageturn', ['assets/audio/pageturn.mp3', 'assets/audio/pageturn.ogg']);
+		this.game.load.audio('phoneSound1', ['assets/audio/phone1.mp3', 'assets/audio/phone1.ogg']);
+		this.game.load.audio('phoneSound2', ['assets/audio/phone2.mp3', 'assets/audio/phone2.ogg']);
+		this.game.load.audio('zipper', ['assets/audio/zipper.mp3', 'assets/audio/zipper.ogg']);
 	},
 	create: function() {
 		text.destroy();

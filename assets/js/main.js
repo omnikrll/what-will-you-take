@@ -7,6 +7,8 @@ var Main = function(game) {
 	ambience = null;
 	jet = null;
 	fire = null;
+	zipper = null;
+	phoneSound1 = null;
 
 	backpackClickZone = null;
 	phoneClickZone = null;
@@ -16,10 +18,12 @@ var Main = function(game) {
 };
 
 Main.prototype = {
+	preload: function() {
+		background = this.game.add.image(0, 0, 'background');
+	},
 	create: function() {
 		// add images
-		background = this.game.add.image(0, 0, 'background');
-		ambience = this.game.add.audio('city-ambience');
+		ambience = this.game.add.audio('ambience');
 		ambience.loopFull(0.6);
 
 		this.addSmoke();
@@ -93,6 +97,8 @@ Main.prototype = {
 	},
 
 	addBackpack: function() {
+		zipper = this.game.add.audio('zipper');
+
 		//add geometry for clickable areas for backpack / phone
 		backpackClickZone = this.game.add.graphics(178, this.game.world.height - 248);
 		backpackClickZone.beginFill(0xFFFFFF, 0);
@@ -114,6 +120,7 @@ Main.prototype = {
 	},
 
 	addPhone: function() {
+		phoneSound1 = this.game.add.audio('phoneSound1');
 
 		phoneClickZone = this.game.add.graphics(294, this.game.world.height - 64);
 		phoneClickZone.beginFill(0xFFFFFF, 0);
@@ -135,6 +142,8 @@ Main.prototype = {
 		ambience.stop();
 		jet.stop();
 		fire.stop();
+		if (this.state == 'Backpack') zipper.play();
+		if (this.state == 'Phone') phoneSound1.play();
 		this._game.state.start(this.state);
 	},
 

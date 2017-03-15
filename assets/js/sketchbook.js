@@ -5,15 +5,19 @@ var Sketchbook = function(game) {
 	sketches = null;
 	previousSketch = null;
 	nextSketch = null;
+	pageturn = null;
 };
 
 Sketchbook.prototype = {
+	preload: function() {
+		background = this.game.add.image(0, 0, 'background');		
+	},
 	create: function() {
-		background = this.game.add.image(0, 0, 'background');
+		pageturn = this.game.add.audio('pageturn');
 
 		sketchbook = this.game.add.sprite(this.game.world.width / 2, this.game.world.height / 2, 'sketchbook');
 		sketchbook.anchor.setTo(0.5, 0.5);
-		sketchbook.scale.setTo(0.53, 0.53);
+		// sketchbook.scale.setTo(0.53, 0.53);
 		sketchbook.inputEnabled = true;
 		sketchbook.events.onInputDown.add(this.openSketchbook, this);
 
@@ -32,7 +36,7 @@ Sketchbook.prototype = {
 		sketchbook.animations.currentAnim.onComplete.add(function() {
 			sketches = this.game.add.sprite((this.game.world.width / 2) + 16, (this.game.world.height / 2) + 60, 'sketches');
 			sketches.anchor.setTo(0.5, 0.5);
-			sketches.scale.setTo(0.37, 0.37);
+			// sketches.scale.setTo(0.37, 0.37);
 
 			previousSketch = this.game.add.text(200, this.game.world.height - 60, 'previous', {font: '16px Arial', fill: '#ffffff'});
 			previousSketch.inputEnabled = true;
@@ -42,6 +46,8 @@ Sketchbook.prototype = {
 			nextSketch.inputEnabled = true;
 			nextSketch.events.onInputDown.add(this.toggleSketch, {shift: 1});
 		}, this);
+
+		pageturn.play();
 	},
 	toggleSketch: function() {
 		var shift = this.shift,
@@ -54,5 +60,7 @@ Sketchbook.prototype = {
 			sketches.frame + shift == -1 ? sketches.frame = 5 : sketches.frame += shift;
 			sketches.alpha = 1;
 		}, this);
+
+		pageturn.play();
 	}
 };

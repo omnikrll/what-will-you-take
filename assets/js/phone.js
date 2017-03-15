@@ -2,6 +2,8 @@ var Phone = function(game) {
 	backText = null;
 	background = null;
 
+	phoneSound2 = null;
+
 	vines = [
 		{
 			url: 'assets/video/vine1.mp4',
@@ -60,11 +62,11 @@ var Phone = function(game) {
 
 Phone.prototype = {
 	preload: function() {
-		this.game.load.video('vine', curVideo.url);
+		background = this.game.add.image(0, 0, 'background');
+		this.game.load.video('video', curVideo.url);
+		phoneSound2 = this.game.add.audio('phoneSound2');
 	},
 	create: function() {
-		background = this.game.add.image(0, 0, 'background');
-
 		phoneBackdrop = this.game.add.graphics(320, 100);
 		phoneBackdrop.beginFill(0xFFFFFF, 1);
 
@@ -75,7 +77,7 @@ Phone.prototype = {
 		phoneBackdrop.lineTo(0, 58);
 		phoneBackdrop.endFill();
 
-		video = this.game.add.video('vine');
+		video = this.game.add.video('video');
 		videoSprite = video.addToWorld(320, 250);
 		videoSprite.angle = -17;
 		videoSprite.scale.setTo(0.57, 0.57);
@@ -89,7 +91,7 @@ Phone.prototype = {
 		video.play(true);
 
 		phone = this.game.add.image(-108, -30, 'phone');
-		phone.scale.setTo(0.33, 0.33);
+		// phone.scale.setTo(0.33, 0.33);
 
 		previousVideo = this.game.add.graphics(480, this.game.world.height - 50);
 		previousVideo.beginFill(0x000000, 0);
@@ -119,6 +121,8 @@ Phone.prototype = {
 	},
 
 	setVideo: function() {
+		phoneSound2.play();
+
 		var _idx = curVideoIdx + this.shift;
 
 		if (_idx == vines.length) _idx = 0;

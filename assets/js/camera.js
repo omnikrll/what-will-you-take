@@ -6,19 +6,26 @@ var Camera = function(game) {
 
 	previousPhoto = null;
 	nextPhoto = null;
+
+	cameraSound1 = null;
+	cameraSound2 = null;
 };
 
 Camera.prototype = {
-	create: function() {
+	preload: function() {
 		background = this.game.add.image(0, 0, 'background');
+	},
+	create: function() {
+		cameraSound1 = this.game.add.audio('cameraSound1');
+		cameraSound2 = this.game.add.audio('cameraSound2');
 
 		photos = this.game.add.sprite(382, 382, 'photos');
 		photos.anchor.setTo(0.5, 0.5);
-		photos.scale.setTo(0.5, 0.5);
+		// photos.scale.setTo(0.5, 0.5);
 
 		camera = this.game.add.image(this.game.world.width / 2, this.game.world.height / 2, 'camera');
 		camera.anchor.setTo(0.5, 0.5);
-		camera.scale.setTo(0.29, 0.29);
+		// camera.scale.setTo(0.29, 0.29);
 
 		backText = this.game.add.text(20, 20, 'back', {font: '24px Arial', fill: '#ffffff'});
 		backText.inputEnabled = true;
@@ -45,8 +52,11 @@ Camera.prototype = {
 		nextPhoto.endFill();
 		nextPhoto.inputEnabled = true;
 		nextPhoto.events.onInputDown.add(this.togglePhotos, {shift: 1});
+
+		cameraSound1.play();
 	},
 	togglePhotos: function() {
+		cameraSound2.play();
 		photos.frame + this.shift == -1 ? photos.frame = 4 : photos.frame += this.shift;
 	},
 	startState: function() {
