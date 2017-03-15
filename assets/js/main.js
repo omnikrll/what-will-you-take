@@ -20,7 +20,7 @@ Main.prototype = {
 		// add images
 		background = this.game.add.sprite(0, 0, 'background');
 		ambience = this.game.add.audio('city-ambience');
-		ambience.loopFull(0.3);
+		ambience.loopFull(0.6);
 
 		this.addSmoke();
 		this.addDrone();
@@ -40,7 +40,7 @@ Main.prototype = {
 		var flight = this.game.add.tween(drone).to({x: -356}, 8000, Phaser.Easing.Linear.None, true);
 
 		jet = this.game.add.audio('jet');
-		jet.volume = 0.1;
+		jet.volume = 0.4;
 
 		var flyDrone = function() {
 			drone.x = this.game.world.width;
@@ -89,7 +89,7 @@ Main.prototype = {
 
 		fadeOutSmoke1.start();
 		fadeInSmoke2.start();
-		fire.loopFull(0.1);
+		fire.loopFull(0.4);
 	},
 
 	addBackpack: function() {
