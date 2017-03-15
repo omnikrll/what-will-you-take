@@ -59,6 +59,7 @@ Preload.prototype = {
 		this.game.load.image('passport', 'assets/images/sprites/passport.png');
 		this.game.load.image('passport-text', 'assets/images/sprites/passport_text.png');
 		this.game.load.image('camera', 'assets/images/sprites/camera.png');
+		this.game.load.spritesheet('photos', 'assets/images/sprites/photos.png', 1024, 683, 5);
 
 		// load sounds
 		this.game.load.audio('jet', ['assets/audio/jet.mp3', 'assets/audio/jet.ogg']);

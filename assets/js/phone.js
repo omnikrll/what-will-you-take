@@ -54,8 +54,8 @@ var Phone = function(game) {
 
 	curVideo = vines[0];
 	curVideoIdx = 0;
-	leftButton = null;
-	rightButton = null;
+	previousVideo = null;
+	nextVideo = null;
 };
 
 Phone.prototype = {
@@ -91,27 +91,27 @@ Phone.prototype = {
 		phone = this.game.add.image(-108, -30, 'phone');
 		phone.scale.setTo(0.33, 0.33);
 
-		leftButton = this.game.add.graphics(480, this.game.world.height - 50);
-		leftButton.beginFill(0x000000, 0);
-		leftButton.moveTo(0, 0);
-		leftButton.lineTo(60, -20);
-		leftButton.lineTo(68, 10);
-		leftButton.lineTo(8, 30);
-		leftButton.lineTo(0, 0);
-		leftButton.endFill();
-		leftButton.inputEnabled = true;
-		leftButton.events.onInputDown.add(this.setVideo, {shift: -1}); 
+		previousVideo = this.game.add.graphics(480, this.game.world.height - 50);
+		previousVideo.beginFill(0x000000, 0);
+		previousVideo.moveTo(0, 0);
+		previousVideo.lineTo(60, -20);
+		previousVideo.lineTo(68, 10);
+		previousVideo.lineTo(8, 30);
+		previousVideo.lineTo(0, 0);
+		previousVideo.endFill();
+		previousVideo.inputEnabled = true;
+		previousVideo.events.onInputDown.add(this.setVideo, {shift: -1}); 
 
-		rightButton = this.game.add.graphics(643, this.game.world.height - 100);
-		rightButton.beginFill(0x000000, 0);
-		rightButton.moveTo(0, 0);
-		rightButton.lineTo(60, -20);
-		rightButton.lineTo(68, 10);
-		rightButton.lineTo(8, 30);
-		rightButton.lineTo(0, 0);
-		rightButton.endFill();
-		rightButton.inputEnabled = true;
-		rightButton.events.onInputDown.add(this.setVideo, {shift: 1}); 
+		nextVideo = this.game.add.graphics(643, this.game.world.height - 100);
+		nextVideo.beginFill(0x000000, 0);
+		nextVideo.moveTo(0, 0);
+		nextVideo.lineTo(60, -20);
+		nextVideo.lineTo(68, 10);
+		nextVideo.lineTo(8, 30);
+		nextVideo.lineTo(0, 0);
+		nextVideo.endFill();
+		nextVideo.inputEnabled = true;
+		nextVideo.events.onInputDown.add(this.setVideo, {shift: 1}); 
 
 		backText = this.game.add.text(20, 20, 'back', { font: '24px Arial', fill: '#ffffff' });
 		backText.inputEnabled = true;
