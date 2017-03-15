@@ -63,7 +63,7 @@ Phone.prototype = {
 		this.game.load.video('vine', curVideo.url);
 	},
 	create: function() {
-		background = this.game.add.sprite(0, 0, 'background');
+		background = this.game.add.image(0, 0, 'background');
 
 		phoneBackdrop = this.game.add.graphics(320, 100);
 		phoneBackdrop.beginFill(0xFFFFFF, 1);
@@ -88,7 +88,7 @@ Phone.prototype = {
 
 		video.play(true);
 
-		phone = this.game.add.sprite(-108, -30, 'phone');
+		phone = this.game.add.image(-108, -30, 'phone');
 		phone.scale.setTo(0.33, 0.33);
 
 		leftButton = this.game.add.graphics(480, this.game.world.height - 50);

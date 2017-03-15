@@ -18,7 +18,7 @@ var Main = function(game) {
 Main.prototype = {
 	create: function() {
 		// add images
-		background = this.game.add.sprite(0, 0, 'background');
+		background = this.game.add.image(0, 0, 'background');
 		ambience = this.game.add.audio('city-ambience');
 		ambience.loopFull(0.6);
 
@@ -35,7 +35,7 @@ Main.prototype = {
 	},
 
 	addDrone: function() {
-		drone = this.game.add.sprite(this.game.world.width, 0, 'drone');
+		drone = this.game.add.image(this.game.world.width, 0, 'drone');
 
 		var flight = this.game.add.tween(drone).to({x: -356}, 8000, Phaser.Easing.Linear.None, true);
 
@@ -60,9 +60,9 @@ Main.prototype = {
 
 		fire = this.game.add.audio('fire');
 
-		smoke2 = this.game.add.sprite(_x, _y, 'smoke2');
+		smoke2 = this.game.add.image(_x, _y, 'smoke2');
 		smoke2.alpha = _alpha;
-		smoke1 = this.game.add.sprite(_x, _y, 'smoke1');
+		smoke1 = this.game.add.image(_x, _y, 'smoke1');
 
 		var fadeInSmoke1 = this.game.add.tween(smoke1).to({alpha: 1}, timer, Phaser.Easing.Sinusoidal.InOut, true),
 			fadeOutSmoke1 = this.game.add.tween(smoke1).to({alpha: _alpha}, timer, Phaser.Easing.Sinusoidal.InOut, true);
@@ -110,6 +110,10 @@ Main.prototype = {
 		backpackClickZone.inputEnabled = true;
 
 		var openBackpack = function() {
+			ambience.stop();
+			jet.stop();
+			fire.stop();
+
 			this.game.state.start('Backpack');
 		};
 
