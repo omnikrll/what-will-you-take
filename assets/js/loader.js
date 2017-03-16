@@ -1,31 +1,43 @@
 var Loader = function(game) {
-	text = null;
+	background = null;
+	loadingText = null;
 	dots = '';
+	titleText = null;
+	subtitleText = null;
+	music = null;
+	startButton = null;
 };
 
 Loader.prototype = {
 	preload: function() {
-		text = this.game.add.text(
+		background = this.game.add.image(this.game.world.width / 2, this.game.world.height / 2, 'titleImg');
+		background.anchor.setTo(0.5, 0.5);
+		music = this.game.add.audio('music');
+		music.loopFull(0.1);
+
+		loadingText = this.game.add.text(
 			0,
 			0,
 			'Loading' + dots,
 			{
-				font: '32px Schoolbell',
-				fill: '#ffffff',
-				align: 'center',
+				font: '42px Schoolbell',
+				fill: '#FFD700',
+				align: 'left',
 				boundsAlignH: 'center',
 				boundsAlignV: 'middle'
 			}
 		);
-
-		text.setTextBounds(0, 0, this.game.world.width, this.game.world.height);
+		loadingText.stroke = '#333333';
+		loadingText.strokeThickness = 1;
+		loadingText.setShadow(2, 2, '#333333', 3);
+		loadingText.setTextBounds(0, 0, this.game.world.width, this.game.world.height);
 
 		var counter = function() {
 			dots += '.';
 
 			if (dots == '....') dots = '';
 
-			text.setText('Loading' + dots);
+			loadingText.setText('Loading' + dots);
 		}
 
 		this.game.time.events.loop(Phaser.Timer.SECOND * 0.7, counter, this);
@@ -66,7 +78,31 @@ Loader.prototype = {
 		this.game.load.audio('zipper', ['assets/audio/zipper.mp3', 'assets/audio/zipper.ogg']);
 	},
 	create: function() {
-		text.destroy();
+		loadingText.destroy();
+
+		titleText = this.game.add.text(this.game.world.width - 72, 48, 'What Will You Take?', {font: '64px Schoolbell', fill: '#FFD700'});
+		titleText.anchor.setTo(1, 0);
+		titleText.stroke = '#333333';
+		titleText.strokeThickness = 1;
+		titleText.setShadow(2, 2, '#333333', 3);
+
+		subtitleText = this.game.add.text(this.game.world.width - 72, 208, 'A game by Lara Aburamadan and Karl Hohn', {font: '24px Schoolbell', fill: '#FFD700', align: 'right'});
+		subtitleText.anchor.setTo(1, 0);
+		subtitleText.stroke = '#333333';
+		subtitleText.strokeThickness = 1;
+		subtitleText.setShadow(2, 2, '#333333', 3);
+
+		startButton = this.game.add.text(this.game.world.width - 256, this.game.world.height - 128, 'start', {font: '42px Schoolbell', fill: '#FFD700'});
+		startButton.stroke = '#333333';
+		startButton.strokeThickness = 1;
+		startButton.setShadow(2, 2, '#333333', 3);
+		startButton.setTextBounds(48, 18, 128, 68);
+		startButton.inputEnabled = true;
+		startButton.events.onInputDown.add(function() {
+			// music.pause();
+			this.game.state.start('Main');
+		}, this);
+
 		// this.game.state.start('Main');		
 	}
 };

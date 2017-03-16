@@ -18,7 +18,10 @@ Passport.prototype = {
 		passport_text.anchor.setTo(0.5, 0.5);
 		// passport_text.scale.setTo(0.36, 0.36);
 
-		backText = this.game.add.text(20, 20, 'back', {font: '24px Arial', fill: '#ffffff'});
+		backText = this.game.add.text(12, 12, 'back', {font: '24px Schoolbell', fill: '#FFD700'});
+		backText.stroke = '#333333';
+		backText.strokeThickness = 1;
+		backText.setShadow(2, 2, '#333333', 3);
 		backText.inputEnabled = true;
 		backText.events.onInputDown.add(this.startState, {_game: this.game, state: 'Backpack'});
 	},

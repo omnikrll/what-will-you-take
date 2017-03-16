@@ -22,9 +22,10 @@ Main.prototype = {
 		background = this.game.add.image(0, 0, 'background');
 	},
 	create: function() {
-		// add images
-		ambience = this.game.add.audio('ambience');
-		ambience.loopFull(0.6);
+		if (ambience !== null) {
+			ambience = this.game.add.audio('ambience');
+			if (ambience.isPlaying) ambience.loopFull(0.6);
+		}
 
 		this.addSmoke();
 		this.addDrone();
@@ -44,7 +45,7 @@ Main.prototype = {
 		var flight = this.game.add.tween(drone).to({x: -356}, 8000, Phaser.Easing.Linear.None, true);
 
 		jet = this.game.add.audio('jet');
-		jet.volume = 0.4;
+		jet.volume = 0.2;
 
 		var flyDrone = function() {
 			drone.x = this.game.world.width;
@@ -62,7 +63,7 @@ Main.prototype = {
 			_x = this.game.world.width - 340,
 			_y = (this.game.world.height / 2) - 180;
 
-		fire = this.game.add.audio('fire');
+		if (fire !== null) fire = this.game.add.audio('fire');
 
 		smoke2 = this.game.add.image(_x, _y, 'smoke2');
 		smoke2.alpha = _alpha;
@@ -93,11 +94,12 @@ Main.prototype = {
 
 		fadeOutSmoke1.start();
 		fadeInSmoke2.start();
-		fire.loopFull(0.4);
+		if (!!fire && !fire.isPlaying) fire.loopFull(0.4);
 	},
 
 	addBackpack: function() {
 		zipper = this.game.add.audio('zipper');
+		zipper.volume = 0.4;
 
 		//add geometry for clickable areas for backpack / phone
 		backpackClickZone = this.game.add.graphics(178, this.game.world.height - 248);
@@ -116,7 +118,10 @@ Main.prototype = {
 		backpackClickZone.inputEnabled = true;
 		backpackClickZone.events.onInputDown.add(this.startState, {_game: this.game, state: 'Backpack'});
 
-		backpackToolTip = this.game.add.text(-1000, -1000, 'open backpack', {font: '18px Arial', fill: '#ffffff'});
+		backpackToolTip = this.game.add.text(-1000, -1000, 'open backpack', {font: '18px Schoolbell', fill: '#FFD700'});
+		backpackToolTip.stroke = '#333333';
+		backpackToolTip.strokeThickness = 1;
+		backpackToolTip.setShadow(2, 2, '#333333', 3);
 	},
 
 	addPhone: function() {
@@ -135,13 +140,13 @@ Main.prototype = {
 		phoneClickZone.inputEnabled = true;
 		phoneClickZone.events.onInputDown.add(this.startState, {_game: this.game, state: 'Phone'});
 
-		phoneToolTip = this.game.add.text(-1000, -1000, 'open phone', {font: '18px Arial', fill: '#ffffff'});
+		phoneToolTip = this.game.add.text(-1000, -1000, 'check phone', {font: '18px Schoolbell', fill: '#FFD700'});
+		phoneToolTip.stroke = '#333333';
+		phoneToolTip.strokeThickness = 1;
+		phoneToolTip.setShadow(2, 2, '#333333', 3);
 	},
 
 	startState: function() {
-		ambience.stop();
-		jet.stop();
-		fire.stop();
 		if (this.state == 'Backpack') zipper.play();
 		if (this.state == 'Phone') phoneSound1.play();
 		this._game.state.start(this.state);

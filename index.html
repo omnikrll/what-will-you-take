@@ -19,11 +19,13 @@
 	<script type="text/javascript" src="assets/js/vendor/phaser.min.js"></script>
 	<script type="text/javascript" src="assets/js/backpack.js"></script>
 	<script type="text/javascript" src="assets/js/bear.js"></script>
+	<script type="text/javascript" src="assets/js/boot.js"></script>
 	<script type="text/javascript" src="assets/js/camera.js"></script>
+	<script type="text/javascript" src="assets/js/loader.js"></script>
 	<script type="text/javascript" src="assets/js/main.js"></script>
 	<script type="text/javascript" src="assets/js/passport.js"></script>
 	<script type="text/javascript" src="assets/js/phone.js"></script>
-	<script type="text/javascript" src="assets/js/preload.js"></script>
+<!--	<script type="text/javascript" src="assets/js/preload.js"></script> -->
 	<script type="text/javascript" src="assets/js/sketchbook.js"></script>
 </head>
 <body>
@@ -32,8 +34,8 @@
 		(function() {
 			game = new Phaser.Game(1024, 683, Phaser.AUTO, 'game');
 
-			// game.state.add('Boot', Boot);
-			game.state.add('Preload', Preload);
+			game.state.add('Boot', Boot);
+			game.state.add('Loader', Loader);
 			game.state.add('Main', Main);
 			game.state.add('Phone', Phone);
 			game.state.add('Backpack', Backpack);
@@ -42,7 +44,7 @@
 			game.state.add('Sketchbook', Sketchbook);
 			game.state.add('Bear', Bear);
 
-			game.state.start('Preload');
+			game.state.start('Boot');
 			// game.state.start('Main');
 		})();
 	</script>

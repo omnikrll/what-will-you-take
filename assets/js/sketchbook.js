@@ -14,6 +14,7 @@ Sketchbook.prototype = {
 	},
 	create: function() {
 		pageturn = this.game.add.audio('pageturn');
+		pageturn.volume = 0.1;
 
 		sketchbook = this.game.add.sprite(this.game.world.width / 2, this.game.world.height / 2, 'sketchbook');
 		sketchbook.anchor.setTo(0.5, 0.5);
@@ -24,7 +25,10 @@ Sketchbook.prototype = {
 		sketchbook.animations.add('turnPage', [1,2,3], 10, false);
 		sketchbook.animations.add('turnBack', [2,1,3], 10, false);
 
-		backText = this.game.add.text(20, 20, 'back', {font: '24px Arial', fill: '#ffffff'});
+		backText = this.game.add.text(20, 20, 'back', {font: '24px Schoolbell', fill: '#FFD700'});
+		backText.stroke = '#333333';
+		backText.strokeThickness = 1;
+		backText.setShadow(2, 2, '#333333', 3);
 		backText.inputEnabled = true;
 		backText.events.onInputDown.add(function() {
 			this.game.state.start('Backpack');
@@ -38,11 +42,17 @@ Sketchbook.prototype = {
 			sketches.anchor.setTo(0.5, 0.5);
 			// sketches.scale.setTo(0.37, 0.37);
 
-			previousSketch = this.game.add.text(200, this.game.world.height - 60, 'previous', {font: '16px Arial', fill: '#ffffff'});
+			previousSketch = this.game.add.text(200, this.game.world.height - 60, 'previous', {font: '16px Schoolbell', fill: '#FFD700'});
+			previousSketch.stroke = '#333333';
+			previousSketch.strokeThickness = 1;
+			previousSketch.setShadow(2, 2, '#333333', 3);
 			previousSketch.inputEnabled = true;
 			previousSketch.events.onInputDown.add(this.toggleSketch, {shift: -1});
 
-			nextSketch = this.game.add.text(this.game.world.width - 240, this.game.world.height - 60, 'next', {font: '16px Arial', fill: '#ffffff'});
+			nextSketch = this.game.add.text(this.game.world.width - 240, this.game.world.height - 60, 'next', {font: '16px Schoolbell', fill: '#FFD700'});
+			nextSketch.stroke = '#333333';
+			nextSketch.strokeThickness = 1;
+			nextSketch.setShadow(2, 2, '#333333', 3);
 			nextSketch.inputEnabled = true;
 			nextSketch.events.onInputDown.add(this.toggleSketch, {shift: 1});
 		}, this);

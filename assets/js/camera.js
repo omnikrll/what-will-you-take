@@ -17,7 +17,9 @@ Camera.prototype = {
 	},
 	create: function() {
 		cameraSound1 = this.game.add.audio('cameraSound1');
+		cameraSound1.volume = 0.3;
 		cameraSound2 = this.game.add.audio('cameraSound2');
+		cameraSound2.volume = 0.3;
 
 		photos = this.game.add.sprite(382, 382, 'photos');
 		photos.anchor.setTo(0.5, 0.5);
@@ -27,7 +29,10 @@ Camera.prototype = {
 		camera.anchor.setTo(0.5, 0.5);
 		// camera.scale.setTo(0.29, 0.29);
 
-		backText = this.game.add.text(20, 20, 'back', {font: '24px Arial', fill: '#ffffff'});
+		backText = this.game.add.text(12, 12, 'back', {font: '24px Schoolbell', fill: '#FFD700'});
+		backText.stroke = '#333333';
+		backText.strokeThickness = 1;
+		backText.setShadow(2, 2, '#333333', 3);
 		backText.inputEnabled = true;
 		backText.events.onInputDown.add(this.startState, {_game: this.game, state: 'Backpack'});
 

@@ -88,6 +88,7 @@ Phone.prototype = {
 		videoText.setTextBounds(0, 0, 260, 100);
 		videoText.angle = -17;
 
+		video.volume = 0.6;
 		video.play(true);
 
 		phone = this.game.add.image(-108, -30, 'phone');
@@ -115,7 +116,10 @@ Phone.prototype = {
 		nextVideo.inputEnabled = true;
 		nextVideo.events.onInputDown.add(this.setVideo, {shift: 1}); 
 
-		backText = this.game.add.text(20, 20, 'back', { font: '24px Arial', fill: '#ffffff' });
+		backText = this.game.add.text(12, 12, 'back', { font: '24px Schoolbell', fill: '#FFD700' });
+		backText.stroke = '#333333';
+		backText.strokeThickness = 1;
+		backText.setShadow(2, 2, '#333333', 3);
 		backText.inputEnabled = true;
 		backText.events.onInputDown.add(this.startState, {_game: this.game, state: 'Main'});
 	},
@@ -135,6 +139,7 @@ Phone.prototype = {
 		video.changeSource(curVideo.url);
 		videoDate.setText(curVideo.date);
 		videoText.setText(curVideo.text);
+		video.volume = 0.6;
 		video.play(true);
 	},
 
