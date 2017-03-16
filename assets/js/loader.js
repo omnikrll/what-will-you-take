@@ -3,8 +3,8 @@ var Loader = function(game) {
 	loadingText = null;
 	dots = '';
 	titleText = null;
-	subtitleText = null;
 	music = null;
+	creditsButton = null;
 	startButton = null;
 };
 
@@ -86,17 +86,21 @@ Loader.prototype = {
 		titleText.strokeThickness = 1;
 		titleText.setShadow(2, 2, '#333333', 3);
 
-		subtitleText = this.game.add.text(this.game.world.width - 72, 208, 'A game by Lara Aburamadan and Karl Hohn', {font: '24px Schoolbell', fill: '#FFD700', align: 'right'});
-		subtitleText.anchor.setTo(1, 0);
-		subtitleText.stroke = '#333333';
-		subtitleText.strokeThickness = 1;
-		subtitleText.setShadow(2, 2, '#333333', 3);
+		creditsButton = this.game.add.text(this.game.world.width - 72, 348, 'credits', {font: '24px Schoolbell', fill: '#FFD700'});
+		creditsButton.anchor.setTo(1, 0);
+		creditsButton.stroke = '#333333';
+		creditsButton.strokeThickness = 1;
+		creditsButton.setShadow(2, 2, '#333333', 3);
+		creditsButton.inputEnabled = true;
+		creditsButton.events.onInputDown.add(function() {
+			this.game.state.start('Credits');
+		}, this);
 
-		startButton = this.game.add.text(this.game.world.width - 256, this.game.world.height - 128, 'start', {font: '42px Schoolbell', fill: '#FFD700'});
+		startButton = this.game.add.text(this.game.world.width - 72, this.game.world.height - 128, 'start', {font: '42px Schoolbell', fill: '#FFD700'});
+		startButton.anchor.setTo(1, 0);
 		startButton.stroke = '#333333';
 		startButton.strokeThickness = 1;
 		startButton.setShadow(2, 2, '#333333', 3);
-		startButton.setTextBounds(48, 18, 128, 68);
 		startButton.inputEnabled = true;
 		startButton.events.onInputDown.add(function() {
 			// music.pause();
