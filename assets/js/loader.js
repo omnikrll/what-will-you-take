@@ -13,7 +13,7 @@ Loader.prototype = {
 		background = this.game.add.image(this.game.world.width / 2, this.game.world.height / 2, 'titleImg');
 		background.anchor.setTo(0.5, 0.5);
 
-		if (ambience !== null) {
+		if (ambience === null) {
 			music = this.game.add.audio('music');
 			if (!music.isPlaying) music.loopFull(0.1);
 		}

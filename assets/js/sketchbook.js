@@ -25,7 +25,7 @@ Sketchbook.prototype = {
 		sketchbook.animations.add('turnPage', [1,2,3], 10, false);
 		sketchbook.animations.add('turnBack', [2,1,3], 10, false);
 
-		backText = this.game.add.text(20, 20, 'back', {font: '24px Schoolbell', fill: '#FFD700'});
+		backText = this.game.add.text(12, 12, 'back', {font: '24px Schoolbell', fill: '#FFD700'});
 		backText.stroke = '#333333';
 		backText.strokeThickness = 1;
 		backText.setShadow(2, 2, '#333333', 3);
