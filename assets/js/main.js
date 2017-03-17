@@ -22,16 +22,26 @@ Main.prototype = {
 		background = this.game.add.image(0, 0, 'background');
 	},
 	create: function() {
-		if (ambience !== null) {
-			ambience = this.game.add.audio('ambience');
-			if (ambience.isPlaying) ambience.loopFull(0.6);
-		}
+		if (ambience == null) ambience = this.game.add.audio('ambience');
+		if (!ambience.isPlaying) ambience.loopFull(0.6);
 
 		this.addSmoke();
 		this.addDrone();
 		this.addGirl();
 		this.addBackpack();
 		this.addPhone();
+
+		backText = this.game.add.text(20, 20, 'back', {font: '24px Schoolbell', fill: '#FFD700'});
+		backText.stroke = '#333333';
+		backText.strokeThickness = 1;
+		backText.setShadow(2, 2, '#333333', 3);
+		backText.inputEnabled = true;
+		backText.events.onInputDown.add(function() {
+			ambience.stop();
+			fire.stop();
+			jet.stop();
+			this.game.state.start('Loader');
+		}, this);
 	},
 
 	addGirl: function() {
@@ -44,7 +54,7 @@ Main.prototype = {
 
 		var flight = this.game.add.tween(drone).to({x: -356}, 8000, Phaser.Easing.Linear.None, true);
 
-		jet = this.game.add.audio('jet');
+		if (jet == null) jet = this.game.add.audio('jet');
 		jet.volume = 0.2;
 
 		var flyDrone = function() {
@@ -63,7 +73,7 @@ Main.prototype = {
 			_x = this.game.world.width - 340,
 			_y = (this.game.world.height / 2) - 180;
 
-		if (fire !== null) fire = this.game.add.audio('fire');
+		if (fire == null) fire = this.game.add.audio('fire');
 
 		smoke2 = this.game.add.image(_x, _y, 'smoke2');
 		smoke2.alpha = _alpha;
@@ -94,7 +104,7 @@ Main.prototype = {
 
 		fadeOutSmoke1.start();
 		fadeInSmoke2.start();
-		if (!!fire && !fire.isPlaying) fire.loopFull(0.4);
+		if (!fire.isPlaying) fire.loopFull(0.4);
 	},
 
 	addBackpack: function() {

@@ -12,8 +12,11 @@ Loader.prototype = {
 	preload: function() {
 		background = this.game.add.image(this.game.world.width / 2, this.game.world.height / 2, 'titleImg');
 		background.anchor.setTo(0.5, 0.5);
-		music = this.game.add.audio('music');
-		music.loopFull(0.1);
+
+		if (ambience !== null) {
+			music = this.game.add.audio('music');
+			if (!music.isPlaying) music.loopFull(0.1);
+		}
 
 		loadingText = this.game.add.text(
 			0,
@@ -103,10 +106,7 @@ Loader.prototype = {
 		startButton.setShadow(2, 2, '#333333', 3);
 		startButton.inputEnabled = true;
 		startButton.events.onInputDown.add(function() {
-			// music.pause();
 			this.game.state.start('Main');
 		}, this);
-
-		// this.game.state.start('Main');		
 	}
 };

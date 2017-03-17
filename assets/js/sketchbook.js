@@ -35,39 +35,23 @@ Sketchbook.prototype = {
 		}, this);
 	},
 	openSketchbook: function() {
-		sketchbook.inputEnabled = false;
+		sketchbook.events.onInputDown.removeAll();
 		sketchbook.animations.play('turnPage');
 		sketchbook.animations.currentAnim.onComplete.add(function() {
 			sketches = this.game.add.sprite((this.game.world.width / 2) + 16, (this.game.world.height / 2) + 60, 'sketches');
 			sketches.anchor.setTo(0.5, 0.5);
-			// sketches.scale.setTo(0.37, 0.37);
 
-			previousSketch = this.game.add.text(200, this.game.world.height - 60, 'previous', {font: '16px Schoolbell', fill: '#FFD700'});
-			previousSketch.stroke = '#333333';
-			previousSketch.strokeThickness = 1;
-			previousSketch.setShadow(2, 2, '#333333', 3);
-			previousSketch.inputEnabled = true;
-			previousSketch.events.onInputDown.add(this.toggleSketch, {shift: -1});
-
-			nextSketch = this.game.add.text(this.game.world.width - 240, this.game.world.height - 60, 'next', {font: '16px Schoolbell', fill: '#FFD700'});
-			nextSketch.stroke = '#333333';
-			nextSketch.strokeThickness = 1;
-			nextSketch.setShadow(2, 2, '#333333', 3);
-			nextSketch.inputEnabled = true;
-			nextSketch.events.onInputDown.add(this.toggleSketch, {shift: 1});
+			sketchbook.events.onInputDown.add(this.nextSketch);
 		}, this);
 
 		pageturn.play();
 	},
-	toggleSketch: function() {
-		var shift = this.shift,
-			turn = shift == 1 ? 'turnPage' : 'turnBack';
-
+	nextSketch: function() {
 		sketches.alpha = 0;
-		sketchbook.animations.play(turn);
+		sketchbook.animations.play('turnPage');
 
 		sketchbook.animations.currentAnim.onComplete.add(function() {
-			sketches.frame + shift == -1 ? sketches.frame = 5 : sketches.frame += shift;
+			sketches.frame++;
 			sketches.alpha = 1;
 		}, this);
 
