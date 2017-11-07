@@ -35,6 +35,7 @@ Camera.prototype = {
 		backText.setShadow(2, 2, '#333333', 3);
 		backText.inputEnabled = true;
 		backText.events.onInputDown.add(this.startState, {_game: this.game, state: 'Backpack'});
+		backText.input.useHandCursor = true;
 
 		previousPhoto = this.game.add.graphics(140, 560);
 		previousPhoto.beginFill(0xFFFFFF, 0);
@@ -46,6 +47,7 @@ Camera.prototype = {
 		previousPhoto.endFill();
 		previousPhoto.inputEnabled = true;
 		previousPhoto.events.onInputDown.add(this.togglePhotos, {shift: -1});
+		previousPhoto.input.useHandCursor = true;
 
 		nextPhoto = this.game.add.graphics(512, 560);
 		nextPhoto.beginFill(0xFFFFFF, 0);
@@ -57,6 +59,7 @@ Camera.prototype = {
 		nextPhoto.endFill();
 		nextPhoto.inputEnabled = true;
 		nextPhoto.events.onInputDown.add(this.togglePhotos, {shift: 1});
+		nextPhoto.input.useHandCursor = true;
 
 		cameraSound1.play();
 	},

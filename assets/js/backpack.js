@@ -27,6 +27,7 @@ Backpack.prototype = {
 		inventory_passport.scale.setTo(0.8, 0.8);
 		inventory_passport.inputEnabled = true;
 		inventory_passport.events.onInputDown.add(this.startState, {_game: this.game, state: 'Passport'});
+		inventory_passport.input.useHandCursor = true;
 
 		passport_tooltip = this.game.add.text(-1000, -1000, 'passport', {font: '18px Schoolbell', fill: '#FFD700'});
 		passport_tooltip.alpha = 0;
@@ -39,6 +40,7 @@ Backpack.prototype = {
 		inventory_camera.scale.setTo(0.8, 0.8);
 		inventory_camera.inputEnabled = true;
 		inventory_camera.events.onInputDown.add(this.startState, {_game: this.game, state: 'Camera'});
+		inventory_camera.input.useHandCursor = true;
 
 		camera_tooltip = this.game.add.text(-1000, -1000, 'camera', {font: '18px Schoolbell', fill: '#FFD700'});
 		camera_tooltip.alpha = 0;
@@ -51,6 +53,7 @@ Backpack.prototype = {
 		inventory_sketchbook.scale.setTo(0.8, 0.8);
 		inventory_sketchbook.inputEnabled = true;
 		inventory_sketchbook.events.onInputDown.add(this.startState, {_game: this.game, state: 'Sketchbook'});
+		inventory_sketchbook.input.useHandCursor = true;
 
 		sketchbook_tooltip = this.game.add.text(-1000, -1000, 'sketchbook', {font: '18px Schoolbell', fill: '#FFD700'});
 		sketchbook_tooltip.alpha = 0;
@@ -63,6 +66,7 @@ Backpack.prototype = {
 		inventory_bear.scale.setTo(0.8, 0.8);
 		inventory_bear.inputEnabled = true;
 		inventory_bear.events.onInputDown.add(this.startState, {_game: this.game, state: 'Bear'});
+		inventory_bear.input.useHandCursor = true;
 
 		bear_tooltip = this.game.add.text(-1000, -1000, 'Koko', {font: '18px Schoolbell', fill: '#FFD700'});
 		bear_tooltip.alpha = 0;
@@ -76,6 +80,7 @@ Backpack.prototype = {
 		backText.setShadow(2, 2, '#333333', 3);
 		backText.inputEnabled = true;
 		backText.events.onInputDown.add(this.startState, {_game: this.game, state: 'Main'});
+		backText.input.useHandCursor = true;
 
 	},
 	update: function() {

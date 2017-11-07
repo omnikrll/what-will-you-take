@@ -24,6 +24,7 @@ Passport.prototype = {
 		backText.setShadow(2, 2, '#333333', 3);
 		backText.inputEnabled = true;
 		backText.events.onInputDown.add(this.startState, {_game: this.game, state: 'Backpack'});
+		backText.input.useHandCursor = true;
 	},
 	startState: function() {
 		this._game.state.start(this.state);

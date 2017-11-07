@@ -21,6 +21,7 @@ Sketchbook.prototype = {
 		// sketchbook.scale.setTo(0.53, 0.53);
 		sketchbook.inputEnabled = true;
 		sketchbook.events.onInputDown.add(this.openSketchbook, this);
+		sketchbook.input.useHandCursor = true;
 
 		sketchbook.animations.add('turnPage', [1,2,3], 10, false);
 		sketchbook.animations.add('turnBack', [2,1,3], 10, false);
@@ -33,6 +34,7 @@ Sketchbook.prototype = {
 		backText.events.onInputDown.add(function() {
 			this.game.state.start('Backpack');
 		}, this);
+		backText.input.useHandCursor = true;
 	},
 	openSketchbook: function() {
 		sketchbook.events.onInputDown.removeAll();

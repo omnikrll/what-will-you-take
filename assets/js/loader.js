@@ -105,6 +105,7 @@ Loader.prototype = {
 		creditsButton.events.onInputDown.add(function() {
 			this.game.state.start('Credits');
 		}, this);
+		creditsButton.input.useHandCursor = true;
 
 		startButton = this.game.add.text(this.game.world.width - 72, this.game.world.height - 128, 'start', {font: '42px Schoolbell', fill: '#FFD700'});
 		startButton.anchor.setTo(1, 0);
@@ -115,6 +116,7 @@ Loader.prototype = {
 		startButton.events.onInputDown.add(function() {
 			this.game.state.start('Main');
 		}, this);
+		startButton.input.useHandCursor = true;
 	},
 	update: function() {
 

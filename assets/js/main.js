@@ -42,6 +42,7 @@ Main.prototype = {
 			jet.stop();
 			this.game.state.start('Loader');
 		}, this);
+		backText.input.useHandCursor = true;
 	},
 
 	addGirl: function() {
@@ -127,6 +128,7 @@ Main.prototype = {
 
 		backpackClickZone.inputEnabled = true;
 		backpackClickZone.events.onInputDown.add(this.startState, {_game: this.game, state: 'Backpack'});
+		backpackClickZone.input.useHandCursor = true;
 
 		backpackToolTip = this.game.add.text(-1000, -1000, 'open backpack', {font: '18px Schoolbell', fill: '#FFD700'});
 		backpackToolTip.stroke = '#333333';
@@ -149,6 +151,7 @@ Main.prototype = {
 
 		phoneClickZone.inputEnabled = true;
 		phoneClickZone.events.onInputDown.add(this.startState, {_game: this.game, state: 'Phone'});
+		phoneClickZone.input.useHandCursor = true;
 
 		phoneToolTip = this.game.add.text(-1000, -1000, 'check phone', {font: '18px Schoolbell', fill: '#FFD700'});
 		phoneToolTip.stroke = '#333333';

@@ -104,6 +104,7 @@ Phone.prototype = {
 		previousVideo.endFill();
 		previousVideo.inputEnabled = true;
 		previousVideo.events.onInputDown.add(this.setVideo, {shift: -1}); 
+		previousVideo.input.useHandCursor = true;
 
 		nextVideo = this.game.add.graphics(643, this.game.world.height - 100);
 		nextVideo.beginFill(0x000000, 0);
@@ -115,6 +116,7 @@ Phone.prototype = {
 		nextVideo.endFill();
 		nextVideo.inputEnabled = true;
 		nextVideo.events.onInputDown.add(this.setVideo, {shift: 1}); 
+		nextVideo.input.useHandCursor = true;
 
 		backText = this.game.add.text(12, 12, 'back', { font: '24px Schoolbell', fill: '#FFD700' });
 		backText.stroke = '#333333';
@@ -122,6 +124,7 @@ Phone.prototype = {
 		backText.setShadow(2, 2, '#333333', 3);
 		backText.inputEnabled = true;
 		backText.events.onInputDown.add(this.startState, {_game: this.game, state: 'Main'});
+		backText.input.useHandCursor = true;
 	},
 
 	setVideo: function() {
