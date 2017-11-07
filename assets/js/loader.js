@@ -3,6 +3,7 @@ var Loader = function(game) {
 	loadingText = null;
 	dots = '';
 	titleText = null;
+	subtitleText = null;
 	music = null;
 	creditsButton = null;
 	startButton = null;
@@ -89,6 +90,12 @@ Loader.prototype = {
 		titleText.strokeThickness = 1;
 		titleText.setShadow(2, 2, '#333333', 3);
 
+		subtitleText = this.game.add.text(this.game.world.width - 72, 128, 'By Lara Aburamadan & Karl Hohn', {font: '24px Schoolbell', fill: '#FFD700'});
+		subtitleText.anchor.setTo(1, 0);
+		subtitleText.stroke = '#333333';
+		subtitleText.strokeThinkness = 1;
+		subtitleText.setShadow(2, 2, '#333333', 3);
+
 		creditsButton = this.game.add.text(this.game.world.width - 72, 348, 'credits', {font: '24px Schoolbell', fill: '#FFD700'});
 		creditsButton.anchor.setTo(1, 0);
 		creditsButton.stroke = '#333333';
@@ -108,5 +115,8 @@ Loader.prototype = {
 		startButton.events.onInputDown.add(function() {
 			this.game.state.start('Main');
 		}, this);
+	},
+	update: function() {
+
 	}
 };
