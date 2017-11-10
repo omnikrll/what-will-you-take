@@ -2,11 +2,11 @@
 
 Photographs, videos, and illustrations by Lara Aburamadan
 
-Code by Karl Hohn
+Design and code by Karl Hohn
 
 Graphics edited by Laura Giron
 
-Music by Lara Aburamadan and Matt Fishman
+Music: Karim Baggili Quartet - 'Zayak'
 
 ~~~~~~
 Sound credits (licensed under CC BY 2.0 unless otherwise noted)

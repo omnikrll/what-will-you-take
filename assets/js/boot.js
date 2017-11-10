@@ -21,7 +21,7 @@ Boot.prototype = {
 	preload: function() {
     this.game.load.image('titleImg', 'assets/images/Lara.jpg');
     this.game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
-		this.game.load.audio('music', ['assets/audio/Leish.mp3', 'assets/audio/Leish.ogg']);
+		this.game.load.audio('music', ['assets/audio/Zayak.mp3', 'assets/audio/Zayak.ogg']);
 	},
 	create: function() {
 		console.log('waiting...');

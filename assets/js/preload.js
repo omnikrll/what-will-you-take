@@ -54,7 +54,7 @@ Loader.prototype = {
 		this.game.load.image('bear2', 'assets/images/bear5.jpg');
 
 		// load sounds
-		this.game.load.audio('music', ['assets/audio/Leish.mp3', 'assets/audio/Leish.ogg']);
+		this.game.load.audio('music', ['assets/audio/Zayak.mp3', 'assets/audio/Zayak.ogg']);
 		this.game.load.audio('ambience', ['assets/audio/ambience.mp3', 'assets/audio/ambience.ogg']);
 		this.game.load.audio('cameraSound1', ['assets/audio/camera1.mp3', 'assets/audio/camera1.ogg']);
 		this.game.load.audio('cameraSound2', ['assets/audio/camera2.mp3', 'assets/audio/camera2.ogg']);
